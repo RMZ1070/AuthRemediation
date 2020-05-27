@@ -1,0 +1,30 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card"> 
+                <div class="card-header">My Profil</div>
+
+                <div class="card-body">
+                <form action="/profil-update/{{Auth::id()}}" method="post">      
+                        @csrf               
+                        <form>   
+                            <div class="form-group">
+                              <label for="name">Name</label>
+                              <input type="text" class="form-control" id="name" name="name" value='{{Auth::user()->name}}'>
+                            </div>
+                            <div class="form-group">   
+                              <label for="email">Email</label>
+                              <input type="email" class="form-control" id="email" name="email" value='{{Auth::user()->email}}'>
+                            </div>
+                            <button type="submit" class="btn btn-warning">Modifier</button>
+                          </form>
+                    </form>
+                </div>
+            </div> 
+        </div>   
+    </div>
+</div>
+@endsection
