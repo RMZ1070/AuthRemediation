@@ -19,9 +19,10 @@ class UserController extends Controller
      */
     public function index()
     {
+             $use =  User::latest()->take(3)->get();
              $user = User::inRandomOrder()->take(5)->get();
             $users = User::all();
-        return view('users/index', compact('users','user')); 
+        return view('users/index', compact('users','user','use')); 
     
        
     }
