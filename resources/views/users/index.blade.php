@@ -9,11 +9,29 @@
 
                 <div class="card-body">
                     <ul class="list-group">
-                        @foreach($users as $user) 
+                        @foreach($users as $item) 
                     <li class="list-group-item">
-                        {{$user->name}}
-                        <a href="/user-edit/{{$user->id}}" class=" btn btn-warning">Edit</a>
-                        <form action="/user-delete/{{$user->id}}" method="post" class="d-inline">
+                        {{$item->name}}
+                        <a href="/user-edit/{{$item->id}}" class=" btn btn-warning">Edit</a>
+                        <form action="/user-delete/{{$item->id}}" method="post" class="d-inline">
+                            @csrf
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        </li>  
+                        @endforeach
+                    </ul>                   
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Users random</div>
+
+                <div class="card-body">
+                    <ul class="list-group">
+                        @foreach($user as $item) 
+                    <li class="list-group-item">
+                        {{$item->name}}
+                        <a href="/user-edit/{{$item->id}}" class=" btn btn-warning">Edit</a>
+                        <form action="/user-delete/{{$item->id}}" method="post" class="d-inline">
                             @csrf
                         <button type="submit" class="btn btn-danger">Delete</button>
                         </form>

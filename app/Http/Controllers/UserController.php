@@ -19,8 +19,9 @@ class UserController extends Controller
      */
     public function index()
     {
+             $user = User::inRandomOrder()->take(5)->get();
             $users = User::all();
-        return view('users/index', compact('users')); 
+        return view('users/index', compact('users','user')); 
     
        
     }
@@ -48,7 +49,7 @@ class UserController extends Controller
         $table->name = $request->name;
         $table->email = $request->email;
         $table->password = $request->password;
-        $table->role_id = $request->roleid; 
+        $table->role_id = $request->roleid;
         $table->save();
         return redirect('/users');
     }
