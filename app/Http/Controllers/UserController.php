@@ -22,10 +22,20 @@ class UserController extends Controller
              $use =  User::latest()->take(3)->get();
              $user = User::inRandomOrder()->take(5)->get();
             $users = User::all();
-        return view('users/index', compact('users','user','use')); 
+            $usershere = User::all();
+        return view('users/index', compact('users','user','use','usershere')); 
     
        
     }
+public function indexII(Request $request)
+{
+    $use =  User::latest()->take(3)->get();
+    $user = User::inRandomOrder()->take(5)->get();
+    $users = User::all();
+    $usershere = User::where('name','LIKE', '%'.$request->input('usershere').'%')->get();
+    return view('users/index', compact('users','user','use','usershere')); 
+    
+}
 
     /**
      * Show the form for creating a new resource.
